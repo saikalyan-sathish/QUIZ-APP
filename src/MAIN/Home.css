@@ -1,0 +1,25 @@
+.Navbar{
+    height: 100vh;
+}
+.Logout-btn{
+   height: 30px;
+   width: 150px;
+   margin-top: 27px;
+   padding: 10px 15px 25px 20px;
+   position: relative;
+  left: 700px;
+ top: 50px;
+}
+.anchor{
+    position: relative;
+   right: 450px;
+  }
+  .welcome-statement{
+position: relative;
+top: 20px;
+right: 450px ;
+  }
+.play-button{
+  position: relative;
+  bottom: 20rem;
+}
