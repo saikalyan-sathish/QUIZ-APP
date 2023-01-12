@@ -7,6 +7,7 @@ import Signup from "./components/Signup";
 import ProtectedRoute from "./components/ProtectedRoute";
 import { UserAuthContextProvider } from "./context/UserAuthContext";
 import Quizinstructions from "./MAIN/Quiz/Quizinstructions";
+import AdminAuth from "./components/AdminAuth";
 
 
 
@@ -28,6 +29,7 @@ function App() {
               <Route path="/" element={<Login />} />
               <Route path="/signup" element={<Signup />} />
               <Route path="/Quizinstructions" element = {<Quizinstructions/>}/>
+              <Route path="/AdminAuth" element = {<AdminAuth/>}/>
               
              
             </Routes>

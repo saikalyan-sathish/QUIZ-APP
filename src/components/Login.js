@@ -4,6 +4,7 @@ import { Form, Alert } from "react-bootstrap";
 import Button from '@mui/material/Button';
 import GoogleButton from "react-google-button";
 import { useUserAuth } from "../context/UserAuthContext";
+import '@fontsource/roboto/400.css';
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -72,6 +73,8 @@ const Login = () => {
       </div>
       <div className="p-4 box mt-3 text-center">
         Don't have an account? <Link to="/signup">Sign up</Link>
+      <br/>
+        If you are an admin <Link to="/AdminAuth">Admin login</Link>
       </div>
     </>
   );
