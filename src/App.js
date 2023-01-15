@@ -8,7 +8,7 @@ import ProtectedRoute from "./components/ProtectedRoute";
 import { UserAuthContextProvider } from "./context/UserAuthContext";
 import Quizinstructions from "./MAIN/Quiz/Quizinstructions";
 import AdminAuth from "./components/AdminAuth";
-
+import AdminDash from "./components/Admin/AdminDash";
 
 
 function App() {
@@ -30,7 +30,7 @@ function App() {
               <Route path="/signup" element={<Signup />} />
               <Route path="/Quizinstructions" element = {<Quizinstructions/>}/>
               <Route path="/AdminAuth" element = {<AdminAuth/>}/>
-              
+              <Route path="/AdminDash" element = {<AdminDash/>}/>
              
             </Routes>
           </UserAuthContextProvider>
