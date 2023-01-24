@@ -9,7 +9,7 @@ import { UserAuthContextProvider } from "./context/UserAuthContext";
 import Quizinstructions from "./MAIN/Quiz/Quizinstructions";
 import AdminAuth from "./components/AdminAuth";
 import AdminDash from "./components/Admin/AdminDash";
-
+import ProtectedRouteAdmin from "./components/Admin/ProtectedRouteAdmin";
 
 function App() {
   return (
@@ -26,18 +26,27 @@ function App() {
                   </ProtectedRoute>
                 }
               />
+          
               <Route path="/" element={<Login />} />
               <Route path="/signup" element={<Signup />} />
-              <Route path="/Quizinstructions" element = {<Quizinstructions/>}/>
-              <Route path="/AdminAuth" element = {<AdminAuth/>}/>
-              <Route path="/AdminDash" element = {<AdminDash/>}/>
-             
+              <Route path="/Quizinstructions" element={ <ProtectedRoute><Quizinstructions /></ProtectedRoute>} />
+              <Route path="/AdminAuth" element={<AdminAuth />} />
+            
             </Routes>
           </UserAuthContextProvider>
+          <Routes>
+          <Route
+                path="/AdminDash"
+                element={
+                  <ProtectedRouteAdmin Component = {AdminDash}/>
+                 
+                }
+              />
+               
+          </Routes>
         </Col>
       </Row>
     </Container>
-    
   );
 }
 
