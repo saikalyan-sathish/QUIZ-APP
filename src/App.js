@@ -38,8 +38,8 @@ function App() {
           <Route
                 path="/AdminDash"
                 element={
-                  <ProtectedRouteAdmin Component = {AdminDash}/>
-                 
+                  // <ProtectedRouteAdmin Component = {AdminDash}/>
+                 <AdminDash/>
                 }
               />
                
