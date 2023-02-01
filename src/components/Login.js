@@ -5,6 +5,7 @@ import Button from '@mui/material/Button';
 import GoogleButton from "react-google-button";
 import { useUserAuth } from "../context/UserAuthContext";
 import '@fontsource/roboto/400.css';
+import './Login.css'
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -35,9 +36,9 @@ const Login = () => {
   };
 
   return (
-    <>
-      <div className="p-4 box">
-        <h2 className="mb-3">QUIZ APP Login</h2>
+  <>
+      <div className="p-4 box" >
+        <h2 className="mb-3">QUIZ APP LOGIN</h2>
         {error && <Alert variant="danger">{error}</Alert>}
         <Form onSubmit={handleSubmit}>
           <Form.Group className="mb-3" controlId="formBasicEmail">
@@ -76,7 +77,7 @@ const Login = () => {
       <br/>
         If you are an admin <Link to="/AdminAuth">Admin login</Link>
       </div>
-    </>
+      </>
   );
 };
 
