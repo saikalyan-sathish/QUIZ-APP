@@ -16,8 +16,8 @@ function Quizinstructions() {
   return (
     
         <div className="Instructions">
-      <div className="Heading">
-        <h1>QUIZ</h1>
+      <div className="Heading1">
+        <h1>QUIZ INSTRUCTIONS</h1>
       </div>
       <div className="Paragraph">
         <p>

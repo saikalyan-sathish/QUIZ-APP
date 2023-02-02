@@ -1,26 +1,46 @@
-.Navbar{
-    height: 100vh;
-}
-.Logout-btn{
-   height: 30px;
-   width: 150px;
-   margin-top: 27px;
-   padding: 10px 15px 25px 20px;
-   position: relative;
-  left: 700px;
- top: 50px;
-}
-.anchor{
-    position: relative;
-   right: 450px;
-  }
-  .welcome-statement{
-position: relative;
-top: 20px;
-right: 450px ;
-  }
-.play-button{
+.Navbar {
   position: relative;
-  bottom: 20rem;
-}
+  bottom: 270px;
+  height: 10vh;
 
+ 
+  
+}
+body {
+  background-image: radial-gradient(circle, #74c6d1, #c8bbca);
+}
+.Logout-btn {
+  height: 30px;
+  width: 100px;
+  margin-top: 27px;
+  /* padding: 10px 15px 25px 20px; */
+  position: relative;
+  left: 750px;
+  top: 50px;
+}
+.anchor {
+  position: relative;
+  right: 450px;
+}
+.welcome-statement {
+  position: relative;
+  top: 25px;
+  right: 550px;
+  font-family: 'Roboto Condensed', sans-serif;
+}
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@700&family=Yanone+Kaffeesatz&display=swap");
+.play-button {
+  position: relative;
+  bottom: 100px;
+  /* top: 100px; */
+  
+  right: 31rem;
+  font-family: "Roboto Condensed", sans-serif;
+  /* font-family: "Yanone Kaffeesatz", sans-serif; */
+  font-size: medium;
+}
+.play-button1 {
+  position: relative;
+  left: 300px;
+  bottom: 60px;
+}

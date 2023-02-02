@@ -16,17 +16,11 @@ const Home = () => {
     } catch (error) {
       console.log(error.message);
     }
-    
   };
   const handleCheckout = () => navigate("/quizinstructions");
   return (
     <>
       <div className="Navbar">
-        <div className="anchor">
-          {" "}
-          <a className="navbar-brand" href="">QUIZ APP</a>
-        </div>
-
         <div className="Logout-btn">
           <Button variant="contained" onClick={handleLogout}>
             Log out
@@ -39,10 +33,14 @@ const Home = () => {
         </div>
       </div>
       <div className="play-button">
+        <h1>Welcome to the quiz-app</h1>
         <h1>Click here to play the quiz game</h1>
-       <Button variant="contained" onClick={handleCheckout} >PLAY</Button>
+        <div className="play-button1">
+          <Button variant="contained" onClick={handleCheckout}>
+            PLAY
+          </Button>
+        </div>
       </div>
-  
     </>
   );
 };
