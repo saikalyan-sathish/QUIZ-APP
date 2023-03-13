@@ -15,7 +15,7 @@ body {
   margin-top: 27px;
   /* padding: 10px 15px 25px 20px; */
   position: relative;
-  left: 750px;
+  left: 720px;
   top: 50px;
 }
 .anchor {
@@ -25,7 +25,7 @@ body {
 .welcome-statement {
   position: relative;
   top: 25px;
-  right: 550px;
+  right: 530px;
   font-family: 'Roboto Condensed', sans-serif;
 }
 @import url("https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@700&family=Yanone+Kaffeesatz&display=swap");
@@ -34,7 +34,7 @@ body {
   bottom: 100px;
   /* top: 100px; */
   
-  right: 31rem;
+  right: 29rem;
   font-family: "Roboto Condensed", sans-serif;
   /* font-family: "Yanone Kaffeesatz", sans-serif; */
   font-size: medium;
