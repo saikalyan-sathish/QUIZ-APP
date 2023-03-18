@@ -1,17 +1,17 @@
 import React from "react";
 import Button from "@mui/material/Button";
 import { useNavigate } from "react-router";
-import { useUserAuth } from "../context/UserAuthContext";
+// import { useUserAuth } from "../context/UserAuthContext";
 import "./Home.css";
 // import {Link} from 'react-router-dom';
 // import quizinstructions from "./Quiz/quizinstructions";
 
 const Home = () => {
-  const { logOut, user } = useUserAuth();
+  // const { logOut, user } = useUserAuth();
   const navigate = useNavigate();
   const handleLogout = async () => {
     try {
-      await logOut();
+      // await logOut();
       navigate("/");
     } catch (error) {
       console.log(error.message);
@@ -29,7 +29,7 @@ const Home = () => {
 
         <div className="welcome-statement">
           Hello Welcome <br />
-          {user && user.email}
+          {/* {user && user.email} */}
         </div>
       </div>
       <div className="play-button">

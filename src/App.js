@@ -5,7 +5,7 @@ import Home from "./MAIN/Home";
 import Login from "./components/Login";
 import Signup from "./components/Signup";
 import ProtectedRoute from "./components/ProtectedRoute";
-import { UserAuthContextProvider } from "./context/UserAuthContext";
+// import { UserAuthContextProvider } from "./context/UserAuthContext";
 import Quizinstructions from "./MAIN/Quiz/Quizinstructions";
 import AdminAuth from "./components/AdminAuth";
 import AdminDash from "./components/Admin/AdminDash";
@@ -16,7 +16,7 @@ function App() {
     <Container style={{ width: "400px" }}>
       <Row>
         <Col>
-          <UserAuthContextProvider>
+          
             <Routes>
               <Route
                 path="/home"
@@ -33,7 +33,7 @@ function App() {
               <Route path="/AdminAuth" element={<AdminAuth />} />
             
             </Routes>
-          </UserAuthContextProvider>
+      
           <Routes>
           <Route
                 path="/AdminDash"

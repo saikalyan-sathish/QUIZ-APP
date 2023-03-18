@@ -3,32 +3,38 @@ import { Link, useNavigate } from "react-router-dom";
 import { Form, Alert } from "react-bootstrap";
 import Button from '@mui/material/Button';
 import GoogleButton from "react-google-button";
-import { useUserAuth } from "../context/UserAuthContext";
+// import { useUserAuth } from "../context/UserAuthContext";
 import '@fontsource/roboto/400.css';
 import './Login.css'
+import axios from 'axios';
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
-  const { logIn, googleSignIn } = useUserAuth();
+  // const { logIn, googleSignIn } = useUserAuth();
   const navigate = useNavigate();
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setError("");
-    try {
-      await logIn(email, password);
-      navigate("/home");
-    } catch (err) {
-      setError(err.message);
-    }
+
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    axios.post('http://localhost:3000', { email, password })
+      .then((response) => {
+        // Handle success
+        navigate("/home");
+      })
+      .catch((error) => {
+        // Handle error
+        // setError(err.message);
+      });
   };
+  
 
   const handleGoogleSignIn = async (e) => {
     e.preventDefault();
     try {
-      await googleSignIn();
+      // await googleSignIn();
       navigate("/home");
     } catch (error) {
       console.log(error.message);
