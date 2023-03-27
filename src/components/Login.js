@@ -3,33 +3,27 @@ import { Link, useNavigate } from "react-router-dom";
 import { Form, Alert } from "react-bootstrap";
 import Button from '@mui/material/Button';
 import GoogleButton from "react-google-button";
-// import { useUserAuth } from "../context/UserAuthContext";
 import '@fontsource/roboto/400.css';
 import './Login.css'
+import { auth,signInWithEmailAndPassword } from '../Firebase';
 import axios from 'axios';
+import TextField from '@mui/material/TextField';
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
-  // const { logIn, googleSignIn } = useUserAuth();
   const navigate = useNavigate();
 
-
-
-  const handleSubmit = (event) => {
+  const handleSubmit = async(event) => {
     event.preventDefault();
-    axios.post('http://localhost:3000', { email, password })
-      .then((response) => {
-        // Handle success
-        navigate("/home");
-      })
-      .catch((error) => {
-        // Handle error
-        // setError(err.message);
-      });
+    try {
+      await signInWithEmailAndPassword(auth, email, password);
+      navigate("/home");
+    } catch (error) {
+      setError("Invalid email or password. Please try again.");
+    }
   };
-  
 
   const handleGoogleSignIn = async (e) => {
     e.preventDefault();
@@ -42,48 +36,53 @@ const Login = () => {
   };
 
   return (
-  <>
-      <div className="p-4 box" >
-        <h2 className="mb-3">QUIZ APP LOGIN</h2>
+    <div className="login-container">
+      <div className="login-form-container">
+        <h2 className="login-heading">QUIZ APP LOGIN</h2>
         {error && <Alert variant="danger">{error}</Alert>}
         <Form onSubmit={handleSubmit}>
-          <Form.Group className="mb-3" controlId="formBasicEmail">
-            <Form.Control
-              type="email"
-              placeholder="Email address"
-              onChange={(e) => setEmail(e.target.value)}
-            />
-          </Form.Group>
+          <TextField
+            variant="outlined"
+            label="Email address"
+            type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            sx={{width: '100%', marginBottom: '1rem'}}
+          />
 
-          <Form.Group className="mb-3" controlId="formBasicPassword">
-            <Form.Control
-              type="password"
-              placeholder="Password"
-              onChange={(e) => setPassword(e.target.value)}
-            />
-          </Form.Group>
+          <TextField
+            variant="outlined"
+            label="Password"
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            sx={{width: '100%', marginBottom: '1rem'}}
+          />
 
           <div className="d-grid gap-2">
-            <Button variant="contained" type="Submit">
+            <Button variant="contained" type="Submit" className="login-button">
               Log In
             </Button>
           </div>
         </Form>
-        <hr />
-        <div>
+
+        <div className="google-login-container">
           <GoogleButton
             className="g-btn"
             type="dark"
             onClick={handleGoogleSignIn}
           />
         </div>
+
+        <div className="signup-link-container">
+          Don't have an account? <Link to="/signup" className="signup-link">Sign up</Link>
+        </div>
+
+        <div className="admin-link-container">
+          If you are an admin <Link to="/AdminAuth" className="admin-link">Admin login</Link>
+        </div>
       </div>
-      <div className="p-4 box mt-3 text-center">
-        Don't have an account? <Link to="/signup">Sign up</Link>
-      <br/>
-        If you are an admin <Link to="/AdminAuth">Admin login</Link>
-      </div>
-      </>
+    </div>
   );
 };
 

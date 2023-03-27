@@ -1,0 +1,156 @@
+.admin-delete-container {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  .admin-delete-title {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    color: #fff;
+  }
+  
+  .admin-delete-scroll {
+    height: 400px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    scrollbar-width: thin;
+    scrollbar-color: #222 #222;
+  }
+  
+  .admin-delete-question {
+    background-color: #fff;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: relative;
+  }
+  
+  .admin-delete-question-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+    color: #222;
+  }
+  
+  .admin-delete-question-options {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    margin-bottom: 1rem;
+    color: #555;
+  }
+  
+  .admin-delete-question-options li {
+    margin-bottom: 0.5rem;
+  }
+  
+  .admin-delete-button {
+    background-color: #ff5f5f;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 0.5rem 
+  }
+  .admin-delete {
+    margin: 50px auto;
+    max-width: 800px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  }
+  
+  .admin-delete h2 {
+    font-size: 36px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+  .admin-delete h3 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .admin-delete ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .admin-delete li {
+    font-size: 18px;
+    margin-bottom: 5px;
+  }
+  
+  .admin-delete button {
+    background-color: #007bff;
+    border: none;
+    color: #fff;
+    padding: 10px 20px;
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+  }
+  
+  .admin-delete button:hover {
+    background-color: #0069d9;
+  }
+  
+  .admin-delete a {
+    display: block;
+    text-align: center;
+    margin-top: 20px;
+    color: #007bff;
+    font-size: 18px;
+    font-weight: bold;
+    text-decoration: none;
+    cursor: pointer;
+    transition: color 0.2s ease-in-out;
+  }
+  
+  .admin-delete a:hover {
+    color: #0056b3;
+  }
+  
+  /* Scrollbar Styling */
+  .admin-delete::-webkit-scrollbar {
+    width: 12px;
+  }
+  
+  .admin-delete::-webkit-scrollbar-track {
+    background-color: #f5f5f5;
+    border-radius: 10px;
+  }
+  
+  .admin-delete::-webkit-scrollbar-thumb {
+    background-color: #007bff;
+    border-radius: 10px;
+  }
+  
+  /* Mouse Scrolling Animation */
+  .admin-delete {
+    animation-name: scroll;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+  }
+  
+  @keyframes scroll {
+    0% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(10px);
+    }
+    100% {
+      transform: translateY(0);
+    }
+  }
+  

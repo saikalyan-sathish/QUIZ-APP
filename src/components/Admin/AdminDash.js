@@ -1,85 +1,84 @@
-import React, { useState } from "react";
-import { initializeApp, getApps } from "firebase/app";
-import { getDatabase, ref, set ,push, child} from "firebase/database";
+import { useState, useEffect } from "react";
+import { initializeApp } from "firebase/app";
+import { getDatabase, ref, set, push } from "firebase/database";
+import { Link } from "react-router-dom";
+
+const db = getDatabase();
 
 function AdminPage() {
   const [question, setQuestion] = useState("");
-  const [options, setOptions] = useState([]);
-  const [correctAnswers, setCorrectAnswers] = useState([]);
-  const [key, setKey] = useState("");
+  const [options, setOptions] = useState(["", "", "", ""]);
+  const [correctAnswers, setCorrectAnswers] = useState([false, false, false, false]);
 
-  const handleQuestionChange = (e) => {
-    setQuestion(e.target.value);
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const questionsRef = ref(db, "questions");
+    const newQuestionRef = push(questionsRef);
+    set(newQuestionRef, {
+      question,
+      options,
+      correctAnswers,
+    })
+      .then(() => {
+        setQuestion("");
+        setOptions(["", "", "", ""]);
+        setCorrectAnswers([false, false, false, false]);
+        alert("Question added successfully!");
+      })
+      .catch((error) => {
+        console.error("Error adding question: ", error);
+        alert("Error adding question. Please try again later.");
+      });
   };
-
-  const handleOptionChange = (e) => {
-    let updatedOptions = [...options];
-    updatedOptions[e.target.id] = e.target.value;
-    setOptions(updatedOptions);
-  };
-
-  const handleCorrectAnswerChange = (e) => {
-    let updatedCorrectAnswers = [...correctAnswers];
-    if (e.target.checked) {
-      updatedCorrectAnswers.push(e.target.value);
-    } else {
-      updatedCorrectAnswers = updatedCorrectAnswers.filter(
-        (item) => item !== e.target.value
-      );
-    }
-    setCorrectAnswers(updatedCorrectAnswers);
-  };
-const db = getDatabase();
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const db = getDatabase();
-    let newKey = db.ref().child("questions").push().key;
-    // let newKey = set(ref(db),child("questions"),push().key);
-    setKey(newKey);
-   set(ref(db,"questions/"+newKey),{
-      question: question,
-      options: options,
-      correctAnswers: correctAnswers,
-    });
-    setQuestion("");
-    setOptions([]);
-    setCorrectAnswers([]);
-  };
-  // db.ref("questions/" + newKey).
 
   return (
     <div>
       <form onSubmit={handleSubmit}>
-        <label>Question:</label>
-        <input type="text" value={question} onChange={handleQuestionChange} />
-        <br />
-        <br />
-        <label>Options:</label>
-        {options.map((option, index) => (
-          <div key={index}>
-            <input
-              type="text"
-              id={index}
-              value={option}
-              onChange={handleOptionChange}
-            />
-            <input
-              type="checkbox"
-              value={option}
-              onChange={handleCorrectAnswerChange}
-            />
-            Correct
-          </div>
-        ))}
-        <br />
-        <button type="button" onClick={() => setOptions([...options, ""])}>
-          Add Option
-        </button>
-        <br />
-        <br />
-        <button type="submit">Submit</button>
+        <div>
+          <label>
+            Question:
+            <input type="text" value={question} onChange={(event) => setQuestion(event.target.value)} />
+          </label>
+        </div>
+        <div>
+          <label>
+            Option 1:
+            <input type="text" value={options[0]} onChange={(event) => setOptions([...options.slice(0, 0), event.target.value, ...options.slice(1)])} />
+          </label>
+        </div>
+        <div>
+          <label>
+            Option 2:
+            <input type="text" value={options[1]} onChange={(event) => setOptions([...options.slice(0, 1), event.target.value, ...options.slice(2)])} />
+          </label>
+        </div>
+        <div>
+          <label>
+            Option 3:
+            <input type="text" value={options[2]} onChange={(event) => setOptions([...options.slice(0, 2), event.target.value, ...options.slice(3)])} />
+          </label>
+        </div>
+        <div>
+          <label>
+            Option 4:
+            <input type="text" value={options[3]} onChange={(event) => setOptions([...options.slice(0, 3), event.target.value])} />
+          </label>
+        </div>
+        <div>
+          <label>
+            Correct Answers:
+            <input type="checkbox" checked={correctAnswers[0]} onChange={(event) => setCorrectAnswers([event.target.checked, ...correctAnswers.slice(1)])} />
+            <input type="checkbox" checked={correctAnswers[1]} onChange={(event) => setCorrectAnswers([correctAnswers[0], event.target.checked, ...correctAnswers.slice(2)])} />
+            <input type="checkbox" checked={correctAnswers[2]} onChange={(event) => setCorrectAnswers([...correctAnswers.slice(0, 2), event.target.checked, correctAnswers[3]])} />
+            <input type="checkbox" checked={correctAnswers[3]} onChange={(event) => setCorrectAnswers([...correctAnswers.slice(0, 3), event.target.checked])} />
+          </label>
+        </div>
+        <button type="submit">Add Question</button>
       </form>
-    </div>
+      <div>
+        <Link to="/AdminDelete">If you want to delete a question, click here.</Link>
+      </div>
+</div>
   );
 }
 

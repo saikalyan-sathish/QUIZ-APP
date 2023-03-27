@@ -1,21 +1,28 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { Form, Alert } from "react-bootstrap";
-import { Button } from "react-bootstrap";
-// import { useUserAuth } from "../context/UserAuthContext";
+import { Button, TextField } from "@material-ui/core";
+import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import Alert from "@material-ui/lab/Alert";
+import axios from "axios";
+import './Signup.css'
 
 const Signup = () => {
   const [email, setEmail] = useState("");
   const [error, setError] = useState("");
   const [password, setPassword] = useState("");
-  // const { signUp } = useUserAuth();
+
   let navigate = useNavigate();
 
   const handleSubmit = async (e) => {
+    const auth = getAuth();
     e.preventDefault();
     setError("");
     try {
-      // await signUp(email, password);
+      const userCredential = await createUserWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
       navigate("/");
     } catch (err) {
       setError(err.message);
@@ -23,38 +30,54 @@ const Signup = () => {
   };
 
   return (
-    <>
-      <div className="p-4 box">
-        <h2 className="mb-3">QUIZ APP Signup</h2>
-        {error && <Alert variant="danger">{error}</Alert>}
-        <Form onSubmit={handleSubmit}>
-          <Form.Group className="mb-3" controlId="formBasicEmail">
-            <Form.Control
-              type="email"
-              placeholder="Email address"
+    <div className="container p-4">
+      <div className="card">
+        <h2 className="card-header">QUIZ APP Signup</h2>
+        <div className="card-body">
+          {error && (
+            <Alert variant="filled" severity="error">
+              {error}
+            </Alert>
+          )}
+          <form onSubmit={handleSubmit}>
+            <TextField
+              id="email"
+              label="Email address"
+              variant="outlined"
+              fullWidth
+              margin="normal"
+              value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
-          </Form.Group>
 
-          <Form.Group className="mb-3" controlId="formBasicPassword">
-            <Form.Control
+            <TextField
+              id="password"
+              label="Password"
               type="password"
-              placeholder="Password"
+              variant="outlined"
+              fullWidth
+              margin="normal"
+              value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
-          </Form.Group>
 
-          <div className="d-grid gap-2">
-            <Button variant="primary" type="Submit">
+            <Button
+              variant="contained"
+              color="primary"
+              type="submit"
+              fullWidth
+              size="large"
+              style={{ marginTop: "1rem" }}
+            >
               Sign up
             </Button>
-          </div>
-        </Form>
+          </form>
+        </div>
+        <div className="card-footer text-center">
+          Already have an account? <Link to="/">Log In</Link>
+        </div>
       </div>
-      <div className="p-4 box mt-3 text-center">
-        Already have an account? <Link to="/">Log In</Link>
-      </div>
-    </>
+    </div>
   );
 };
 

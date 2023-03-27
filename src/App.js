@@ -5,35 +5,38 @@ import Home from "./MAIN/Home";
 import Login from "./components/Login";
 import Signup from "./components/Signup";
 import ProtectedRoute from "./components/ProtectedRoute";
-// import { UserAuthContextProvider } from "./context/UserAuthContext";
+// import { UserAuthContextProvider } from "./components/CONTEXT/UserAuthContext";
 import Quizinstructions from "./MAIN/Quiz/Quizinstructions";
 import AdminAuth from "./components/AdminAuth";
 import AdminDash from "./components/Admin/AdminDash";
 import ProtectedRouteAdmin from "./components/Admin/ProtectedRouteAdmin";
-
+import Quiz from "./MAIN/Quiz/Quiz";
+import AdminDelete from "./components/Admin/AdminDelete";
+import Scoreboard from "./MAIN/Quiz/Scoreboard";
 function App() {
   return (
     <Container style={{ width: "400px" }}>
       <Row>
-        <Col>
-          
+        
             <Routes>
               <Route
                 path="/home"
                 element={
-                  <ProtectedRoute>
+                  
                     <Home />
-                  </ProtectedRoute>
+                 
                 }
               />
-          
               <Route path="/" element={<Login />} />
               <Route path="/signup" element={<Signup />} />
-              <Route path="/Quizinstructions" element={ <ProtectedRoute><Quizinstructions /></ProtectedRoute>} />
+              <Route path="/Quizinstructions" element={ <Quizinstructions />} />
               <Route path="/AdminAuth" element={<AdminAuth />} />
-            
+              <Route path="/Quiz" element={<Quiz/>}/>
+              <Route path="/AdminDelete" element={<AdminDelete/>}/>
+              <Route path="/Scoreboard" element={<Scoreboard/>}/>
             </Routes>
-      
+   
+      <Col>
           <Routes>
           <Route
                 path="/AdminDash"

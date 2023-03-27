@@ -1,23 +1,34 @@
 import React from "react";
 import { Navigate } from "react-router-dom";
-// import { useUserAuth } from "../context/UserAuthContext";
+import  { useState ,useEffect} from "react";
+import { Button } from "react-bootstrap";
+import { auth } from "../Firebase";
 
-const ProtectedRoute = ({ children }) => {
- 
-  
-  const user = ()=>{
-    <div>
-      
-    </div>
-  }
- 
-  
+import { Route, Redirect ,Routes} from 'react-router-dom';
+import { useAuthState } from 'react-firebase-hooks/auth';
 
-  console.log("Check user in Private: ", user);
-  if (!user) {
-    return <Navigate to="/" />;
-  }
-  return children;
+
+
+const ProtectedRoute = ({ component: Component, ...rest }) => {
+  const [user, loading] = useAuthState(auth);
+
+
+  return (
+    <Routes>
+    <Route
+      {...rest}
+      render={(props) => {
+        !loading && user ? (
+          <Component {...props} />
+        ) : (
+          <Navigate to="/" />
+        );
+      }}
+    />
+    </Routes>
+  );
 };
 
 export default ProtectedRoute;
+
+
