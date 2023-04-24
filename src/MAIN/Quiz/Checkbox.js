@@ -14,15 +14,18 @@ function Checkbox({ label }) {
   }
  
   return (
+    <div className="Checkbox-main">
     <div className="checkbox-wrapper">
       <label>
+      <div className="input-checkbox">
         <input
           type="checkbox"
           checked={isChecked}
           onChange={() => setIsChecked((prev) => !prev)}
         />
-        <span>{label}</span>
+        <span>{label}</span></div>
       </label>
+      <div className="Submit-btn">
       <p>
         {isChecked ? (
           <Button variant="contained" onClick={handleSubmit}>START THE QUIZ</Button>
@@ -30,6 +33,8 @@ function Checkbox({ label }) {
           "Unchecked"
         )}
       </p>
+      </div>
+    </div>
     </div>
   );
 }

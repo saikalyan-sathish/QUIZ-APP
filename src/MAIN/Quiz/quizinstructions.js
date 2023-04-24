@@ -14,7 +14,7 @@ export default Quizinstructions;
 function Quizinstructions() {
   
   return (
-    
+    <div className="white">
         <div className="Instructions">
       <div className="Heading1">
         <h1>QUIZ INSTRUCTIONS</h1>
@@ -43,10 +43,10 @@ function Quizinstructions() {
           before responding to all the questions.
         </p>
       </div>
-      <Checkbox label="Agree to the above terms and conditions"/>
+      <div className="Checkbox"><Checkbox label="Agree to the above terms and conditions"/></div>
 
     </div>
-   
+    </div>
     
   )
 }

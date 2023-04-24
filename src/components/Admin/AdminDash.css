@@ -1,0 +1,63 @@
+.admin-dash-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  label {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+  }
+  
+  input[type="text"], select {
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    width: 300px;
+    font-size: 16px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+    transition: box-shadow 0.3s ease-in-out;
+  }
+  
+  input[type="text"]:focus, select:focus {
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+  }
+  
+  button {
+    background-color: #008CBA;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-size: 16px;
+    padding: 10px 20px;
+    margin-top: 10px;
+    cursor: pointer;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+    transition: box-shadow 0.3s ease-in-out;
+  }
+  
+  button:hover {
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+  }
+  
+  a {
+    display: block;
+    text-align: center;
+    margin-top: 20px;
+  }
+  .Correctanswers-checkbox{
+    position: relative;
+    
+  }
+  .Addquestion-btn{
+    position: relative;
+    right: 20rem;
+  }

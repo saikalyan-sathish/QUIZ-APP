@@ -4,7 +4,7 @@ import { Button, TextField } from "@material-ui/core";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import Alert from "@material-ui/lab/Alert";
 import axios from "axios";
-import './Signup.css'
+import './Login.css'
 
 const Signup = () => {
   const [email, setEmail] = useState("");
@@ -13,9 +13,9 @@ const Signup = () => {
 
   let navigate = useNavigate();
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (event) => {
     const auth = getAuth();
-    e.preventDefault();
+    event.preventDefault();
     setError("");
     try {
       const userCredential = await createUserWithEmailAndPassword(
@@ -23,6 +23,10 @@ const Signup = () => {
         email,
         password
       );
+
+      const user = userCredential.user;
+      const token = await user.getIdToken();
+      axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
       navigate("/");
     } catch (err) {
       setError(err.message);
@@ -30,37 +34,36 @@ const Signup = () => {
   };
 
   return (
-    <div className="container p-4">
-      <div className="card">
-        <h2 className="card-header">QUIZ APP Signup</h2>
-        <div className="card-body">
-          {error && (
-            <Alert variant="filled" severity="error">
-              {error}
-            </Alert>
-          )}
-          <form onSubmit={handleSubmit}>
-            <TextField
-              id="email"
-              label="Email address"
-              variant="outlined"
-              fullWidth
-              margin="normal"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            />
+    <div className="login-container">
+      <div className="login-form-container">
+        <div className="Login-heading"><h2 className="login-heading">QUIZ APP Signup</h2></div>
+        {error && (
+          <Alert variant="filled" severity="error">
+            {error}
+          </Alert>
+        )}
+        <form onSubmit={handleSubmit}>
+          <TextField
+            id="email"
+            label="Email address"
+            variant="outlined"
+            fullWidth
+            margin="normal"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+          <TextField
+            id="password"
+            label="Password"
+            type="password"
+            variant="outlined"
+            fullWidth
+            margin="normal"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
 
-            <TextField
-              id="password"
-              label="Password"
-              type="password"
-              variant="outlined"
-              fullWidth
-              margin="normal"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-            />
-
+          <div className="d-grid gap-2">
             <Button
               variant="contained"
               color="primary"
@@ -71,10 +74,11 @@ const Signup = () => {
             >
               Sign up
             </Button>
-          </form>
-        </div>
-        <div className="card-footer text-center">
-          Already have an account? <Link to="/">Log In</Link>
+          </div>
+        </form>
+
+        <div className="signup-link-container">
+          Already have an account? <div className="signup-link"><Link to="/" className="signup-link">Log In</Link></div>
         </div>
       </div>
     </div>

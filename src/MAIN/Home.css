@@ -1,46 +1,179 @@
-.Navbar {
-  position: relative;
-  bottom: 270px;
-  height: 10vh;
 
- 
-  
-}
-body {
-  background-image: radial-gradient(circle, #74c6d1, #c8bbca);
-}
-.Logout-btn {
-  height: 30px;
+/* Style the Logout button  */
+.Logout-btn1 button {
+   background-color: #dc3545;
+  color: #fff;
+  border: none;
+  padding: 30px 30px 20px 25px;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
   width: 100px;
-  margin-top: 27px;
-  /* padding: 10px 15px 25px 20px; */
+  height: 50rem;
   position: relative;
-  left: 720px;
+  right: 60px;
+  top: 20px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+} 
+
+.Logout-btn1 button:hover {
+  background-color: #c82333;
+}
+
+/* Add some padding to the welcome statement */
+.welcome-statement1 {
+  padding: 10px 0;
+  position: relative;
+  right: 20px;
+  top: 60px;
+}
+
+/* Style the play button */
+.play-button3 button {
+  background-color: #28a745;
+}
+
+.play-button3 button:hover {
+  background-color: #218838;
+}
+
+.Content{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  animation: slideIn 1.5s ease-in-out;
+  animation-fill-mode: both;
+  animation-delay: 0.5s;
+  position: relative;
+  background-color: #ecf4fb;
+
+}
+
+.Card2 {
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  padding: 40px;
+  animation: popIn 1s cubic-bezier(0.36, 0.07, 0.19, 0.97);
+  animation-fill-mode: both;
+  animation-delay: 1s;
+  max-width: 250rem;
+  font-family: 'Edu NSW ACT Foundation', cursive;
+  font-family: 'Playfair Display', serif;
+  font-family: 'Roboto Slab', serif;
+  font-size: 20px;
+  margin: auto;
+  position: relative;
+  bottom: 2rem;
+ 
+}
+
+.Navbar2 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 40px;
+  padding: 0 40px;
+  background-color: #ecf4fb;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  position: relative;
+  top: 20px;
+  width: 5rem;
+}
+
+.Logout-btn1 {
+  display: flex;
+  align-items: center;
+}
+
+.Logout-btn1 button {
+  margin-left: 20px;
+}
+
+.welcome-statement {
+  font-size: 20px;
+  position: relative;
+  bottom: 40px;
+  left: 110px;
+}
+
+.play-button1 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: calc(100vh - 80px);
+}
+
+.play-button h1 {
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+  margin: 0 0 30px;
+  position: relative;
   top: 50px;
 }
-.anchor {
+
+.play-button button {
+  font-size: 24px;
+  font-weight: bold;
+  padding: 20px 40px;
+  border-radius: 50px;
+  background-color: #007bff;
+  color: #fff;
+  transition: all 0.2s ease;
+  animation: scaleUp 0.5s ease-in-out;
+  animation-fill-mode: both;
+  animation-delay: 2s;
   position: relative;
-  right: 450px;
+  top: 30px;
+  left: 3rem;
 }
-.welcome-statement {
-  position: relative;
-  top: 25px;
-  right: 530px;
-  font-family: 'Roboto Condensed', sans-serif;
+
+.play-button button:hover {
+  background-color: #0062cc;
+  cursor: pointer;
+  animation: rotateIn 0.5s cubic-bezier(0.36, 0.07, 0.19, 0.97);
+  animation-fill-mode: both;
 }
-@import url("https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@700&family=Yanone+Kaffeesatz&display=swap");
-.play-button {
-  position: relative;
-  bottom: 100px;
-  /* top: 100px; */
-  
-  right: 29rem;
-  font-family: "Roboto Condensed", sans-serif;
-  /* font-family: "Yanone Kaffeesatz", sans-serif; */
-  font-size: medium;
+
+@keyframes slideIn {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(0);
+  }
 }
-.play-button1 {
-  position: relative;
-  left: 300px;
-  bottom: 60px;
+
+@keyframes popIn {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes scaleUp {
+
+0% {
+transform: scale(0);
+}
+100% {
+transform: scale(1);
+}
+}
+
+@keyframes rotateIn {
+0% {
+transform: rotate(0deg);
+}
+100% {
+transform: rotate(360deg);
+}
 }

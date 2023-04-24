@@ -1,11 +1,49 @@
 /* Set the background color and image */
+@import url('https://fonts.googleapis.com/css2?family=Edu+NSW+ACT+Foundation:wght@500&family=Playfair+Display:wght@800&family=Roboto+Slab&display=swap');
 body {
-  background-color: #f5f5f5;
-  background-image: url('./blue-curve-background_53876-113112.avif');
-  background-repeat: no-repeat;
-  background-size: cover;
+ 
+  /* background-image: url('./blue-curve-background_53876-113112.avif'); */
+  font-family: 'Edu NSW ACT Foundation', cursive;
+  font-family: 'Playfair Display', serif;
+  font-family: 'Roboto Slab', serif;
+  background: linear-gradient(45deg, #fc5c7d, #6a82fb, #05dfd7);
+  background-size: 400% 400%;
+  animation: gradient 15s ease infinite;
+ 
+  }
+  @keyframes gradient {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+  .login-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 72vh;
+    background-color: white;
+    animation: move 1.5s ease-in-out;
+    border-radius: 16px;
+    padding: 2rem;
+    box-shadow: #0d1724;
   }
   
+  @keyframes move {
+    0% {
+      transform: translateY(100%);
+    }
+    100% {
+      transform: translateY(0);
+    }
+  }
   /* Center the login page vertically */
   .box {
   display: flex;
@@ -29,6 +67,8 @@ body {
   font-family: 'Montserrat', sans-serif;
   text-transform: uppercase;
   letter-spacing: 0.1rem;
+  position: relative;
+  bottom: 10px;
   }
   
   /* Style for the form */
@@ -116,3 +156,35 @@ body {
   width: 100%;
   max-width: 500px;
   }
+
+ .signup-link{
+    position: relative;
+    bottom: 22px;
+    left: 40px;
+
+ }
+ .admin-link{
+  position: relative;
+    bottom: 22px;
+    left: 34px;
+
+ }
+.signup-link-container{
+  position: relative;
+  top: 20px;
+}
+.Login-heading{
+  position: relative;
+  bottom: 40px;
+}
+.form{
+  position: relative;
+  top: 80px;
+}
+.input-email{
+
+}
+.input-password{
+  position: relative;
+  
+}

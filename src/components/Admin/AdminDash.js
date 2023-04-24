@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { initializeApp } from "firebase/app";
 import { getDatabase, ref, set, push } from "firebase/database";
 import { Link } from "react-router-dom";
+import './AdminDash.css'
 
 const db = getDatabase();
 
@@ -66,14 +67,16 @@ function AdminPage() {
         </div>
         <div>
           <label>
+            <div className="Correctanswers-checkbox">
             Correct Answers:
             <input type="checkbox" checked={correctAnswers[0]} onChange={(event) => setCorrectAnswers([event.target.checked, ...correctAnswers.slice(1)])} />
             <input type="checkbox" checked={correctAnswers[1]} onChange={(event) => setCorrectAnswers([correctAnswers[0], event.target.checked, ...correctAnswers.slice(2)])} />
             <input type="checkbox" checked={correctAnswers[2]} onChange={(event) => setCorrectAnswers([...correctAnswers.slice(0, 2), event.target.checked, correctAnswers[3]])} />
-            <input type="checkbox" checked={correctAnswers[3]} onChange={(event) => setCorrectAnswers([...correctAnswers.slice(0, 3), event.target.checked])} />
+            <input type="checkbox" checked={correctAnswers[3]} onChange={(event) => setCorrectAnswers([...correctAnswers.slice(0, 3), event.target.checked])} /> </div>
           </label>
         </div>
-        <button type="submit">Add Question</button>
+        <div className="Addquestion-btn">
+        <button type="submit">Add Question</button></div>
       </form>
       <div>
         <Link to="/AdminDelete">If you want to delete a question, click here.</Link>
