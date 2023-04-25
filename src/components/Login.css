@@ -188,3 +188,14 @@ body {
   position: relative;
   
 }
+.signup-link1{
+  position: relative;
+  top:44px;
+  right: 15px;
+}
+.admin-link1{
+  position: relative;
+    top: 43px;
+    right: 25px;
+
+}

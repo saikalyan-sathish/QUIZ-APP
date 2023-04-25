@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { getAuth } from "firebase/auth";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useNavigate, useLocation,Link} from "react-router-dom";
 import { Form, Alert } from "react-bootstrap";
 import Button from '@mui/material/Button';
 import GoogleButton from "react-google-button";
@@ -111,7 +111,10 @@ navigate("/home");
 setError("Something went wrong. Please try again.");
 });
 }}
-/>
+/><div className="signup-link1">Click here for </div>
+<Link to="/signup">Sign Up</Link>
+<div className="admin-link1">Click here for </div>
+<Link to="/AdminAuth">AdminLogin</Link>
 </div>
 </div>
 </div>
