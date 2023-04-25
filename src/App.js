@@ -13,6 +13,22 @@ import Quiz from "./MAIN/Quiz/Quiz";
 import AdminDelete from "./components/Admin/AdminDelete";
 
 
+function PrivateRoute({ element: Component, isAuthenticated, ...rest }) {
+  return isAuthenticated ? (
+    <Component {...rest} />
+  ) : (
+    <Navigate to="/" replace={true} />
+  );
+}
+
+function AdminRoute({ element: Component, isAuthenticated, ...rest }) {
+  return isAuthenticated ? (
+    <Component {...rest} />
+  ) : (
+    <Navigate to="/AdminAuth" replace={true} />
+  );
+}
+
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [isAdminAuthenticated, setIsAdminAuthenticated] = useState(false);
@@ -30,17 +46,54 @@ function App() {
             )
           }
         />
-        <Route path="/home" element={<Home />} />
+        <Route
+          path="/home"
+          element={
+            <PrivateRoute
+              element={Home}
+              isAuthenticated={isAuthenticated}
+            />
+          }
+        />
         <Route path="/signup" element={<Signup />} />
-        <Route path="/quizinstructions" element={<Quizinstructions />} />
+        <Route
+          path="/quizinstructions"
+          element={
+            <PrivateRoute
+              element={Quizinstructions}
+              isAuthenticated={isAuthenticated}
+            />
+          }
+        />
         <Route
           path="/adminauth"
           element={<AdminAuth setIsAdminAuthenticated={setIsAdminAuthenticated} />}
         />
-        <Route path="/quiz" element={<Quiz />} />
-        <Route path="/admindash" element={<AdminDash />} />
-        <Route path="/admindelete" element={<AdminDelete />} />
-      
+        <Route
+          path="/quiz"
+          element={
+            <PrivateRoute element={Quiz} isAuthenticated={isAuthenticated} />
+          }
+        />
+        <Route
+          path="/admindash"
+          element={
+            <AdminRoute
+              element={AdminDash}
+              isAuthenticated={isAdminAuthenticated}
+            />
+          }
+        />
+        <Route
+          path="/admindelete"
+          element={
+            <AdminRoute
+              element={AdminDelete}
+              isAuthenticated={isAdminAuthenticated}
+            />
+          }
+        />
+       
       </Routes>
     </Container>
   );
